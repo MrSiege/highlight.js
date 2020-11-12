@@ -27,7 +27,7 @@ jobs:
           node-version: 15.x
       - run: npm install
       - run: node ./tools/build.js -t node
-      - run: npm test
+      # - run: npm test
 
       - if: contains(env.GITHUB_REF, 'beta') || contains(env.GITHUB_REF, 'pre')
         run: echo "NPM_TAG=beta" >> $GITHUB_ENV
@@ -37,6 +37,7 @@ jobs:
 
       - name: Publish to NPM
         id: publish
+        working-directory: ./build
         uses: JS-DevTools/npm-publish@v1
         with:
           check-version: true
