@@ -38,11 +38,12 @@ jobs:
       - name: Publish to NPM
         id: publish
         uses: JS-DevTools/npm-publish@v1
-        working-directory: ./build
+        # working-directory: ./build
         with:
           check-version: true
           dry-run: true
           token: ${{ secrets.NPM_TOKEN }}
+          package: ./build/package.json
           tag: ${{ env.NPM_TAG }}
 
       - if: steps.publish.outputs.type != 'none'
