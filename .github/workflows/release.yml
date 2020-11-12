@@ -38,7 +38,6 @@ jobs:
       - name: Publish to NPM
         id: publish
         uses: JS-DevTools/npm-publish@v1
-        # working-directory: ./build
         with:
           check-version: true
           dry-run: true
